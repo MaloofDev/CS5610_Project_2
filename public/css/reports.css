@@ -1,0 +1,16 @@
+.reports-table time {
+  white-space: nowrap;
+}
+
+.report-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+}
+
+.reports-empty {
+  max-width: 560px;
+  margin: 2rem auto;
+  border-style: dashed;
+  text-align: center;
+}

@@ -16,3 +16,16 @@
   font-size: 0.85rem;
   color: var(--color-muted);
 }
+
+/* Lets wide tables scroll sideways on small screens. */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--color-surface);
+}
+
+.table-wrap .table tr:last-child td {
+  border-bottom: 0;
+}

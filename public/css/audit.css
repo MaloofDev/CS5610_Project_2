@@ -1,0 +1,12 @@
+.audit-card {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.field textarea.audit-input {
+  min-height: 14rem;
+}
+
+.audit-submit {
+  justify-self: start;
+}
