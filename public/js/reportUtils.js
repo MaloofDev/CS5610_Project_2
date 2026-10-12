@@ -1,10 +1,17 @@
 // Shared by New Audit, My Reports, and Report Detail.
 import { loginUrl } from "./nav.js";
 
+/** Bootstrap classes for green, yellow, and red badges. */
+export const BADGES = {
+  ok: "bg-success-subtle text-success-emphasis",
+  review: "bg-warning-subtle text-warning-emphasis",
+  conflict: "bg-danger-subtle text-danger-emphasis",
+};
+
 const SUMMARY_BADGES = {
-  green: "badge-ok",
-  yellow: "badge-review",
-  red: "badge-conflict",
+  green: BADGES.ok,
+  yellow: BADGES.review,
+  red: BADGES.conflict,
 };
 
 /**
@@ -63,6 +70,7 @@ export function reportUrl(id) {
 /** @returns {HTMLTimeElement} like "Oct 12, 2026" */
 export function dateElement(iso) {
   const time = document.createElement("time");
+  time.className = "text-nowrap";
   time.dateTime = iso;
   time.textContent = new Date(iso).toLocaleDateString(undefined, {
     dateStyle: "medium",
@@ -84,10 +92,10 @@ export function goalLabel(goal) {
 /** @returns {HTMLSpanElement} "3 green", "2 yellow", "1 red" badges */
 export function summaryBadges(summary) {
   const row = document.createElement("span");
-  row.className = "badge-row";
+  row.className = "d-inline-flex flex-wrap gap-1";
   for (const [color, badge] of Object.entries(SUMMARY_BADGES)) {
     const span = document.createElement("span");
-    span.className = `badge ${badge}`;
+    span.className = `badge rounded-pill ${badge}`;
     span.textContent = `${summary[color]} ${color}`;
     row.append(span);
   }

@@ -32,11 +32,20 @@ export function loginUrl(page = "/login.html") {
   return `${page}?next=${encodeURIComponent(next)}`;
 }
 
-function link(href, label, isCurrent) {
-  const a = document.createElement("a");
+function element(tag, className, ...children) {
+  const el = document.createElement(tag);
+  el.className = className;
+  el.append(...children);
+  return el;
+}
+
+function link(href, label, isCurrent, className = "nav-link") {
+  const a = element("a", className, label);
   a.href = href;
-  a.textContent = label;
-  if (isCurrent) a.setAttribute("aria-current", "page");
+  if (isCurrent) {
+    a.classList.add("active");
+    a.setAttribute("aria-current", "page");
+  }
   return a;
 }
 
@@ -45,43 +54,65 @@ async function logOut() {
   location.href = "/";
 }
 
+// Bootstrap's collapse plugin opens #nav-menu from this button on small screens.
+function menuToggle() {
+  const button = element(
+    "button",
+    "navbar-toggler",
+    element("span", "navbar-toggler-icon")
+  );
+  button.type = "button";
+  button.dataset.bsToggle = "collapse";
+  button.dataset.bsTarget = "#nav-menu";
+  button.setAttribute("aria-controls", "nav-menu");
+  button.setAttribute("aria-expanded", "false");
+  button.setAttribute("aria-label", "Toggle navigation");
+  return button;
+}
+
 async function renderNav() {
   const header = document.getElementById("site-nav");
   if (!header) return;
 
   const path = location.pathname === "/" ? "/index.html" : location.pathname;
 
-  const nav = document.createElement("nav");
-  nav.className = "nav";
+  const links = element(
+    "ul",
+    "navbar-nav me-auto",
+    ...LINKS.map(({ href, label }) =>
+      element("li", "nav-item", link(href, label, path === href))
+    )
+  );
+  const account = element("div", "navbar-nav align-items-lg-center");
+
+  const menu = element("div", "collapse navbar-collapse", links, account);
+  menu.id = "nav-menu";
+
+  const nav = element(
+    "nav",
+    "navbar navbar-expand-lg bg-body border-bottom",
+    element(
+      "div",
+      "container",
+      link("/", "LicenseLens", false, "navbar-brand fw-bold"),
+      menuToggle(),
+      menu
+    )
+  );
   nav.setAttribute("aria-label", "Main");
-
-  const brand = link("/", "LicenseLens", false);
-  brand.className = "nav-brand";
-
-  const links = document.createElement("div");
-  links.className = "nav-links";
-  for (const { href, label } of LINKS)
-    links.append(link(href, label, path === href));
-
-  const account = document.createElement("div");
-  account.className = "nav-account";
-
-  nav.append(brand, links, account);
   header.replaceChildren(nav);
 
   const user = await getCurrentUser();
   if (user) {
-    const name = document.createElement("span");
-    name.className = "nav-username";
-    name.textContent = user.username;
-
-    const button = document.createElement("button");
+    const button = element("button", "nav-link", "Log out");
     button.type = "button";
-    button.className = "link-button";
-    button.textContent = "Log out";
     button.addEventListener("click", logOut);
 
-    account.append(name, separator(), button);
+    account.append(
+      element("span", "navbar-text fw-semibold", user.username),
+      separator(),
+      button
+    );
   } else {
     account.append(
       link(loginUrl("/login.html"), "Log in", path === "/login.html"),
@@ -91,11 +122,14 @@ async function renderNav() {
   }
 }
 
+// Only shown when the links sit in a row, not in the collapsed menu.
 function separator() {
-  const span = document.createElement("span");
-  span.className = "nav-separator";
+  const span = element(
+    "span",
+    "navbar-text text-body-tertiary d-none d-lg-inline px-2",
+    "|"
+  );
   span.setAttribute("aria-hidden", "true");
-  span.textContent = "|";
   return span;
 }
 

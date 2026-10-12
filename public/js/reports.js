@@ -17,6 +17,9 @@ const noMatches = document.getElementById("no-matches");
 const emptyState = document.getElementById("empty-state");
 const loginNotice = document.getElementById("login-notice");
 
+// Styles a button like the Open link next to it.
+const LINK_BUTTON = "btn btn-link p-0";
+
 let reports = [];
 let editingId = null;
 
@@ -66,29 +69,34 @@ function link(report, text = report.name) {
 
 function renameForm(report) {
   const form = document.createElement("form");
-  form.className = "inline-form";
+  form.className = "hstack gap-2";
   const input = document.createElement("input");
+  input.className = "form-control form-control-sm";
   input.name = "name";
   input.value = report.name;
   input.maxLength = 100;
   input.required = true;
   input.setAttribute("aria-label", "Report name");
-  const save = button("Save", "button button-small button-primary");
+  const save = button("Save", "btn btn-sm btn-primary");
   save.type = "submit";
-  form.append(input, save, button("Cancel", "button button-small", "cancel"));
+  form.append(
+    input,
+    save,
+    button("Cancel", "btn btn-sm btn-outline-secondary", "cancel")
+  );
   return form;
 }
 
 function actions(report) {
   const wrap = document.createElement("span");
-  wrap.className = "report-actions";
+  wrap.className = "hstack flex-wrap column-gap-3 row-gap-1";
   const open = link(report, "Open");
   open.setAttribute("aria-label", `Open ${report.name}`);
   wrap.append(
     open,
-    button("Rename", "link-button", "rename", report.name),
-    button("Re-run", "link-button", "rerun", report.name),
-    button("Delete", "link-button link-button-danger", "delete", report.name)
+    button("Rename", LINK_BUTTON, "rename", report.name),
+    button("Re-run", LINK_BUTTON, "rerun", report.name),
+    button("Delete", `${LINK_BUTTON} link-danger`, "delete", report.name)
   );
   return wrap;
 }

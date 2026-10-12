@@ -4,46 +4,62 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Log in · LicenseLens</title>
-    <link rel="stylesheet" href="/css/base.css" />
-    <link rel="stylesheet" href="/css/nav.css" />
-    <link rel="stylesheet" href="/css/buttons.css" />
-    <link rel="stylesheet" href="/css/cards.css" />
-    <link rel="stylesheet" href="/css/forms.css" />
-    <link rel="stylesheet" href="/css/auth.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+      defer
+    ></script>
     <script type="module" src="/js/nav.js"></script>
     <script type="module" src="/js/auth.js"></script>
   </head>
-  <body>
+  <body class="bg-body-tertiary">
     <header id="site-nav"></header>
-    <main class="container">
-      <section class="card auth-card">
-        <h1>Log in</h1>
-        <form id="auth-form" data-mode="login" class="form">
-          <label class="field">
-            <span>Username</span>
-            <input
-              name="username"
-              type="text"
-              autocomplete="username"
-              required
-            />
-          </label>
-          <label class="field">
-            <span>Password</span>
-            <input
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              required
-            />
-          </label>
-          <button type="submit" class="button button-primary">Log in</button>
-          <p id="auth-error" class="form-error" role="alert"></p>
-        </form>
-        <p class="auth-switch">
-          No account yet? <a id="switch-mode" href="/signup.html">Sign up</a>
-        </p>
-      </section>
+    <main class="container py-4">
+      <div class="row justify-content-center">
+        <section class="col-sm-10 col-md-7 col-lg-5">
+          <div class="card card-body p-4 shadow-sm">
+            <h1 class="h2">Log in</h1>
+            <form id="auth-form" data-mode="login" class="vstack gap-3">
+              <div>
+                <label for="username" class="form-label">Username</label>
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  class="form-control"
+                  autocomplete="username"
+                  required
+                />
+              </div>
+              <div>
+                <label for="password" class="form-label">Password</label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  class="form-control"
+                  autocomplete="current-password"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Log in</button>
+              <p id="auth-error" class="text-danger mb-0" role="alert"></p>
+            </form>
+            <p class="mb-0">
+              No account yet?
+              <a id="switch-mode" href="/signup.html">Sign up</a>
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
   </body>
 </html>

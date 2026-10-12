@@ -1,4 +1,5 @@
 import {
+  BADGES,
   api,
   confirmDelete,
   dateElement,
@@ -27,10 +28,10 @@ const loginNotice = document.getElementById("login-notice");
 
 // Listed in the default sort order: conflicts first.
 const STATUSES = {
-  conflict: { label: "Conflict", badge: "badge-conflict" },
-  conditions: { label: "Conditions", badge: "badge-review" },
-  review: { label: "Review needed", badge: "badge-review" },
-  ok: { label: "OK", badge: "badge-ok" },
+  conflict: { label: "Conflict", badge: BADGES.conflict },
+  conditions: { label: "Conditions", badge: BADGES.review },
+  review: { label: "Review needed", badge: BADGES.review },
+  ok: { label: "OK", badge: BADGES.ok },
 };
 const STATUS_ORDER = Object.keys(STATUSES);
 
@@ -100,9 +101,9 @@ function renderRow(row) {
   return tr;
 }
 
-function badge(text, className = "") {
+function badge(text, className = "text-bg-light border") {
   const span = document.createElement("span");
-  span.className = `badge ${className}`;
+  span.className = `badge rounded-pill ${className}`;
   span.textContent = text;
   return span;
 }
@@ -136,7 +137,7 @@ function alternatives(row) {
     return row.status === "conflict" ? "No permissive match found." : "";
   }
   const list = document.createElement("ul");
-  list.className = "alternative-list";
+  list.className = "list-unstyled mb-0";
   for (const alternative of row.alternatives) {
     const item = document.createElement("li");
     item.append(

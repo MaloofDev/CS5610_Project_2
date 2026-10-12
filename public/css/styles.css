@@ -1,0 +1,24 @@
+/* Bootstrap covers almost everything; these fill the gaps. */
+
+.dialog {
+  width: calc(100% - 2rem);
+  max-width: 440px;
+}
+
+.dialog::backdrop {
+  background: rgb(16 24 40 / 40%);
+}
+
+.border-dashed {
+  border-style: dashed;
+}
+
+/* The wrapper has its own border, so the last row doesn't need one. */
+.table-card tr:last-child > td {
+  border-bottom-width: 0;
+}
+
+/* Keeps reasons readable when the table scrolls on small screens. */
+.results-table td:nth-child(5) {
+  min-width: 16rem;
+}
