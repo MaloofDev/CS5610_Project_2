@@ -1,0 +1,284 @@
+[
+  {
+    "id": "MIT",
+    "name": "MIT License",
+    "type": "permissive",
+    "explanation": "You can use, copy, change, and sell this code, including in closed-source products, as long as you keep the copyright and license notice."
+  },
+  {
+    "id": "MIT-0",
+    "name": "MIT No Attribution",
+    "type": "permissive",
+    "explanation": "Like MIT, but you don't even need to keep the copyright notice. Use it for anything, including closed-source products."
+  },
+  {
+    "id": "MIT-CMU",
+    "name": "CMU License",
+    "type": "permissive",
+    "explanation": "A short MIT-style license (used by Pillow). You can use, change, and distribute the code, including in closed-source products, as long as you keep the copyright notice."
+  },
+  {
+    "id": "ISC",
+    "name": "ISC License",
+    "type": "permissive",
+    "explanation": "Works the same as MIT: use, change, and distribute the code for any purpose, including closed-source products, as long as you keep the copyright notice."
+  },
+  {
+    "id": "0BSD",
+    "name": "BSD Zero Clause License",
+    "type": "permissive",
+    "explanation": "Use the code for any purpose with no conditions at all. You don't need to keep the copyright notice."
+  },
+  {
+    "id": "BSD-2-Clause",
+    "name": "BSD 2-Clause \"Simplified\" License",
+    "type": "permissive",
+    "explanation": "Use, change, and distribute the code, including in closed-source products. Keep the copyright notice and disclaimer in both source code and compiled releases."
+  },
+  {
+    "id": "BSD-3-Clause",
+    "name": "BSD 3-Clause \"New\" License",
+    "type": "permissive",
+    "explanation": "Use, change, and distribute the code, including in closed-source products. Keep the copyright notice and disclaimer, and don't use the authors' names to promote your product without permission."
+  },
+  {
+    "id": "Apache-2.0",
+    "name": "Apache License 2.0",
+    "type": "permissive",
+    "explanation": "Use, change, and distribute the code, including in closed-source products. Keep the license and any NOTICE file, and mark files you changed. Contributors also grant you a patent license, which ends if you sue them over patents in the code."
+  },
+  {
+    "id": "Unlicense",
+    "name": "The Unlicense",
+    "type": "permissive",
+    "explanation": "The author dedicated the code to the public domain. You can do anything with it, with no conditions."
+  },
+  {
+    "id": "CC0-1.0",
+    "name": "Creative Commons Zero v1.0 Universal",
+    "type": "permissive",
+    "explanation": "The author gave up all copyright, as far as the law allows. You can use the work for anything with no conditions. It does not grant any patent rights."
+  },
+  {
+    "id": "Public-Domain",
+    "name": "Public Domain",
+    "type": "permissive",
+    "explanation": "The author says the code is in the public domain, so you can use it with no conditions. Public domain isn't recognized the same way in every country, so some legal teams still ask for a formal license."
+  },
+  {
+    "id": "Zlib",
+    "name": "zlib License",
+    "type": "permissive",
+    "explanation": "Use the code for anything, including closed-source products. Don't claim you wrote the original, clearly mark changed versions, and keep the notice in source copies."
+  },
+  {
+    "id": "BSL-1.0",
+    "name": "Boost Software License 1.0",
+    "type": "permissive",
+    "explanation": "Use, change, and distribute the code, including in closed-source products. Keep the license text in source copies. Compiled releases don't need it."
+  },
+  {
+    "id": "Python-2.0",
+    "name": "Python License 2.0",
+    "type": "permissive",
+    "explanation": "The license for Python itself. You can use, change, and distribute the code, including in closed-source products, as long as you keep the copyright notice and license."
+  },
+  {
+    "id": "PSF-2.0",
+    "name": "Python Software Foundation License 2.0",
+    "type": "permissive",
+    "explanation": "Use, change, and distribute the code, including in closed-source products. Keep the copyright notice and include a short summary of any changes you made."
+  },
+  {
+    "id": "CNRI-Python",
+    "name": "CNRI Python License",
+    "type": "permissive",
+    "explanation": "An older license covering parts of Python. You can use, change, and distribute the code, including in closed-source products, as long as you keep the copyright notice and license."
+  },
+  {
+    "id": "ZPL-2.1",
+    "name": "Zope Public License 2.1",
+    "type": "permissive",
+    "explanation": "Use, change, and distribute the code, including in closed-source products. Keep the copyright notice and don't use the Zope name to promote your product."
+  },
+  {
+    "id": "TCL",
+    "name": "TCL/TK License",
+    "type": "permissive",
+    "explanation": "Use, change, and distribute the code for any purpose, including closed-source products, as long as you keep the copyright notice."
+  },
+  {
+    "id": "HPND",
+    "name": "Historical Permission Notice and Disclaimer",
+    "type": "permissive",
+    "explanation": "An old, short permissive license. You can use, copy, change, and distribute the code for any purpose, including closed-source products, as long as you keep the copyright notice."
+  },
+  {
+    "id": "PostgreSQL",
+    "name": "PostgreSQL License",
+    "type": "permissive",
+    "explanation": "Similar to MIT and BSD. Use, change, and distribute the code for any purpose, including closed-source products, as long as you keep the copyright notice."
+  },
+  {
+    "id": "BlueOak-1.0.0",
+    "name": "Blue Oak Model License 1.0.0",
+    "type": "permissive",
+    "explanation": "A modern permissive license. Use, change, and distribute the code, including in closed-source products, as long as anyone who gets it from you also gets the license. It includes a patent license."
+  },
+  {
+    "id": "WTFPL",
+    "name": "Do What The F*ck You Want To Public License",
+    "type": "permissive",
+    "explanation": "Do whatever you want with the code, including in closed-source products. Its informal wording makes some legal teams cautious."
+  },
+  {
+    "id": "CC-BY-4.0",
+    "name": "Creative Commons Attribution 4.0",
+    "type": "permissive",
+    "explanation": "Usually used for documentation, data, or images rather than code. You can share and change the work for any purpose, including commercial use, as long as you credit the author."
+  },
+  {
+    "id": "CC-BY-3.0",
+    "name": "Creative Commons Attribution 3.0",
+    "type": "permissive",
+    "explanation": "An older version of CC-BY, usually used for content rather than code. You can share and change the work for any purpose, including commercial use, as long as you credit the author."
+  },
+  {
+    "id": "MPL-2.0",
+    "name": "Mozilla Public License 2.0",
+    "type": "weak-copyleft",
+    "explanation": "You can combine this code with closed-source code. If you change any of its files and distribute them, you must share those files under MPL-2.0. Your own separate files can stay private."
+  },
+  {
+    "id": "MPL-1.1",
+    "name": "Mozilla Public License 1.1",
+    "type": "weak-copyleft",
+    "explanation": "An older version of the MPL. You can combine it with closed-source code, but changes to its files must be shared under MPL-1.1. Unlike MPL-2.0, it is not compatible with the GPL."
+  },
+  {
+    "id": "LGPL-2.0-only",
+    "name": "GNU Library General Public License v2 only",
+    "type": "weak-copyleft",
+    "explanation": "You can use this library in closed-source software, but changes to the library itself must be released under the LGPL. If you distribute your app, users must be able to swap in their own version of the library, which is easiest when you link to it dynamically."
+  },
+  {
+    "id": "LGPL-2.0-or-later",
+    "name": "GNU Library General Public License v2 or later",
+    "type": "weak-copyleft",
+    "explanation": "Same as LGPL-2.0, but you may choose to follow any later version of the LGPL instead. You can use the library in closed-source software, but changes to the library must stay open and users must be able to swap it out."
+  },
+  {
+    "id": "LGPL-2.1-only",
+    "name": "GNU Lesser General Public License v2.1 only",
+    "type": "weak-copyleft",
+    "explanation": "You can use this library in closed-source software, but changes to the library itself must be released under the LGPL. If you distribute your app, users must be able to swap in their own version of the library, which is easiest when you link to it dynamically."
+  },
+  {
+    "id": "LGPL-2.1-or-later",
+    "name": "GNU Lesser General Public License v2.1 or later",
+    "type": "weak-copyleft",
+    "explanation": "Same as LGPL-2.1, but you may choose to follow any later version of the LGPL instead. You can use the library in closed-source software, but changes to the library must stay open and users must be able to swap it out."
+  },
+  {
+    "id": "LGPL-3.0-only",
+    "name": "GNU Lesser General Public License v3.0 only",
+    "type": "weak-copyleft",
+    "explanation": "You can use this library in closed-source software, but changes to the library itself must be released under LGPL-3.0. If you distribute your app, users must be able to replace the library with their own version, including on devices you ship."
+  },
+  {
+    "id": "LGPL-3.0-or-later",
+    "name": "GNU Lesser General Public License v3.0 or later",
+    "type": "weak-copyleft",
+    "explanation": "Same as LGPL-3.0, but you may choose to follow any later version of the LGPL instead. You can use the library in closed-source software, but changes to the library must stay open and users must be able to replace it."
+  },
+  {
+    "id": "EPL-1.0",
+    "name": "Eclipse Public License 1.0",
+    "type": "weak-copyleft",
+    "explanation": "You can use this code in closed-source products, but if you distribute changes to EPL files, those changes must be released under the EPL. It is not compatible with the GPL."
+  },
+  {
+    "id": "EPL-2.0",
+    "name": "Eclipse Public License 2.0",
+    "type": "weak-copyleft",
+    "explanation": "You can use this code in closed-source products, but if you distribute changes to EPL files, those changes must be released under the EPL. The author can optionally allow use with GPL-2.0 code."
+  },
+  {
+    "id": "CDDL-1.0",
+    "name": "Common Development and Distribution License 1.0",
+    "type": "weak-copyleft",
+    "explanation": "Works file by file like the MPL: changed CDDL files must stay open, but the rest of your code can stay closed. It is not compatible with the GPL."
+  },
+  {
+    "id": "CDDL-1.1",
+    "name": "Common Development and Distribution License 1.1",
+    "type": "weak-copyleft",
+    "explanation": "Works file by file like the MPL: changed CDDL files must stay open, but the rest of your code can stay closed. It is not compatible with the GPL."
+  },
+  {
+    "id": "Artistic-2.0",
+    "name": "Artistic License 2.0",
+    "type": "weak-copyleft",
+    "explanation": "Used by Perl. You can use and distribute the code freely, including commercially. If you distribute a changed version, you must either share your changes or rename it so nobody confuses it with the original."
+  },
+  {
+    "id": "GPL-2.0-only",
+    "name": "GNU General Public License v2.0 only",
+    "type": "strong-copyleft",
+    "explanation": "If you distribute software that includes or links to this code, the whole program must be released under GPL-2.0 with its source code. Using it privately or only on your own servers doesn't count as distributing. It can't be combined with GPL-3.0-only or Apache-2.0 code."
+  },
+  {
+    "id": "GPL-2.0-or-later",
+    "name": "GNU General Public License v2.0 or later",
+    "type": "strong-copyleft",
+    "explanation": "If you distribute software that includes or links to this code, the whole program must be released under GPL-2.0 or a later GPL version (such as GPL-3.0) with its source code. Using it privately or only on your own servers doesn't count as distributing."
+  },
+  {
+    "id": "GPL-3.0-only",
+    "name": "GNU General Public License v3.0 only",
+    "type": "strong-copyleft",
+    "explanation": "If you distribute software that includes or links to this code, the whole program must be released under GPL-3.0 with its source code, and users must be able to install changed versions on devices you ship. Running it only on your own servers doesn't count as distributing."
+  },
+  {
+    "id": "GPL-3.0-or-later",
+    "name": "GNU General Public License v3.0 or later",
+    "type": "strong-copyleft",
+    "explanation": "Same as GPL-3.0, but you may choose to follow any later GPL version instead. If you distribute software that includes or links to this code, the whole program must be released under the GPL with its source code."
+  },
+  {
+    "id": "AGPL-3.0-only",
+    "name": "GNU Affero General Public License v3.0 only",
+    "type": "strong-copyleft",
+    "explanation": "Works like GPL-3.0, plus it also applies over a network: if people use a changed version of your software as a web service, you must offer them its full source code."
+  },
+  {
+    "id": "AGPL-3.0-or-later",
+    "name": "GNU Affero General Public License v3.0 or later",
+    "type": "strong-copyleft",
+    "explanation": "Same as AGPL-3.0, but you may choose to follow any later version instead. If people use a changed version of your software as a web service, you must offer them its full source code."
+  },
+  {
+    "id": "OSL-3.0",
+    "name": "Open Software License 3.0",
+    "type": "strong-copyleft",
+    "explanation": "If you distribute software built from this code, or let people use it over a network, you must release your changes and derived works under OSL-3.0 with source code. It is not compatible with the GPL."
+  },
+  {
+    "id": "SSPL-1.0",
+    "name": "Server Side Public License v1",
+    "type": "strong-copyleft",
+    "explanation": "Not an approved open-source license. Like AGPL, but if you offer the software as a service you must release the source of your whole service stack, including hosting and management tools. Most companies avoid it for hosted products."
+  },
+  {
+    "id": "UNLICENSED",
+    "name": "Unlicensed (proprietary)",
+    "type": "unknown",
+    "explanation": "The author has not given anyone permission to use this code. On npm this means private or proprietary. Don't use it without a separate agreement."
+  },
+  {
+    "id": "UNKNOWN",
+    "name": "Unknown license",
+    "type": "unknown",
+    "explanation": "LicenseLens doesn't recognize this license. Read the license text or ask the authors before you rely on it."
+  }
+]

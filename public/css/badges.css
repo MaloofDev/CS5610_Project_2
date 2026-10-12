@@ -1,0 +1,36 @@
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-ok {
+  color: var(--color-ok);
+  background: var(--color-ok-bg);
+  border-color: transparent;
+}
+
+.badge-review {
+  color: var(--color-review);
+  background: var(--color-review-bg);
+  border-color: transparent;
+}
+
+.badge-conflict {
+  color: var(--color-conflict);
+  background: var(--color-conflict-bg);
+  border-color: transparent;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

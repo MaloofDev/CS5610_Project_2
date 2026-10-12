@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Log in · LicenseLens</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/buttons.css" />
+    <link rel="stylesheet" href="/css/cards.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+    <script type="module" src="/js/nav.js"></script>
+    <script type="module" src="/js/auth.js"></script>
+  </head>
+  <body>
+    <header id="site-nav"></header>
+    <main class="container">
+      <section class="card auth-card">
+        <h1>Log in</h1>
+        <form id="auth-form" data-mode="login" class="form">
+          <label class="field">
+            <span>Username</span>
+            <input
+              name="username"
+              type="text"
+              autocomplete="username"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+          </label>
+          <button type="submit" class="button button-primary">Log in</button>
+          <p id="auth-error" class="form-error" role="alert"></p>
+        </form>
+        <p class="auth-switch">
+          No account yet? <a id="switch-mode" href="/signup.html">Sign up</a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
