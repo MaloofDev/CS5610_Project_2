@@ -26,6 +26,7 @@ export async function connectDB() {
       { username: 1 },
       { unique: true, collation: USERNAME_COLLATION }
     );
+  await db.collection("reports").createIndex({ ownerId: 1, updatedAt: -1 });
 
   console.log(`Connected to MongoDB database "${dbName}"`);
   return db;

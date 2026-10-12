@@ -4,13 +4,197 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>New Audit · LicenseLens</title>
-    <link rel="stylesheet" href="/css/base.css" />
-    <link rel="stylesheet" href="/css/nav.css" />
-    <link rel="stylesheet" href="/css/buttons.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+      defer
+    ></script>
     <script type="module" src="/js/nav.js"></script>
+    <script type="module" src="/js/audit.js"></script>
   </head>
-  <body>
+  <body class="bg-body-tertiary">
     <header id="site-nav"></header>
-    <main class="container"></main>
+    <main class="container py-4">
+      <div class="row justify-content-center">
+        <section class="col-lg-9 col-xl-8">
+          <div class="card card-body p-4 shadow-sm">
+            <h1 class="h2">New Audit</h1>
+            <p class="text-body-secondary">
+              Paste your dependencies and choose a goal. Each package comes back
+              green, yellow, or red with a reason.
+            </p>
+
+            <p id="login-notice" class="alert alert-warning" hidden>
+              <a id="login-link" class="alert-link" href="/login.html"
+                >Log in</a
+              >
+              or
+              <a id="signup-link" class="alert-link" href="/signup.html">
+                sign up
+              </a>
+              to run an audit. Reports are saved to your account so you can
+              recheck them later.
+            </p>
+
+            <form id="audit-form" class="vstack gap-3">
+              <div>
+                <label for="report-name" class="form-label">Report name</label>
+                <input
+                  id="report-name"
+                  name="name"
+                  type="text"
+                  class="form-control"
+                  maxlength="100"
+                  placeholder="Sam's API backend"
+                  required
+                />
+              </div>
+
+              <fieldset>
+                <legend class="form-label fs-6">Input type</legend>
+                <div class="hstack flex-wrap column-gap-4 row-gap-2">
+                  <div class="form-check mb-0">
+                    <input
+                      id="input-package-json"
+                      class="form-check-input"
+                      type="radio"
+                      name="inputType"
+                      value="package.json"
+                      checked
+                    />
+                    <label class="form-check-label" for="input-package-json">
+                      package.json
+                    </label>
+                  </div>
+                  <div class="form-check mb-0">
+                    <input
+                      id="input-requirements"
+                      class="form-check-input"
+                      type="radio"
+                      name="inputType"
+                      value="requirements.txt"
+                    />
+                    <label class="form-check-label" for="input-requirements">
+                      requirements.txt
+                    </label>
+                  </div>
+                  <div class="form-check mb-0">
+                    <input
+                      id="input-plain-list"
+                      class="form-check-input"
+                      type="radio"
+                      name="inputType"
+                      value="plain-list"
+                    />
+                    <label class="form-check-label" for="input-plain-list">
+                      Plain list
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div id="ecosystem-field" hidden>
+                <label for="ecosystem" class="form-label">Ecosystem</label>
+                <input
+                  id="ecosystem"
+                  name="ecosystem"
+                  type="text"
+                  class="form-control"
+                  list="ecosystem-options"
+                  maxlength="40"
+                  autocomplete="off"
+                  placeholder="Cargo"
+                  aria-describedby="ecosystem-hint"
+                />
+                <datalist id="ecosystem-options">
+                  <option value="npm"></option>
+                  <option value="PyPI"></option>
+                  <option value="Packagist"></option>
+                  <option value="Cargo"></option>
+                  <option value="RubyGems"></option>
+                  <option value="Go"></option>
+                  <option value="Maven"></option>
+                  <option value="NuGet"></option>
+                </datalist>
+                <div id="ecosystem-hint" class="form-text">
+                  Any ecosystem works. Packages that aren't in the database show
+                  as Review needed.
+                </div>
+              </div>
+
+              <div>
+                <label for="dependencies" class="form-label">
+                  Paste your dependencies
+                </label>
+                <textarea
+                  id="dependencies"
+                  name="input"
+                  class="form-control font-monospace"
+                  rows="10"
+                  spellcheck="false"
+                  aria-describedby="input-hint"
+                  required
+                ></textarea>
+                <div id="input-hint" class="form-text"></div>
+              </div>
+
+              <fieldset>
+                <legend class="form-label fs-6">Goal</legend>
+                <div class="hstack flex-wrap column-gap-4 row-gap-2">
+                  <div class="form-check mb-0">
+                    <input
+                      id="goal-closed"
+                      class="form-check-input"
+                      type="radio"
+                      name="goal"
+                      value="closed-source"
+                      checked
+                    />
+                    <label class="form-check-label" for="goal-closed">
+                      Closed-source
+                    </label>
+                  </div>
+                  <div class="hstack gap-2">
+                    <div class="form-check mb-0">
+                      <input
+                        id="goal-open"
+                        class="form-check-input"
+                        type="radio"
+                        name="goal"
+                        value="open-source"
+                      />
+                      <label class="form-check-label" for="goal-open">
+                        Open-source under
+                      </label>
+                    </div>
+                    <select
+                      name="goalLicense"
+                      class="form-select form-select-sm w-auto"
+                      aria-label="Open-source license"
+                      disabled
+                    >
+                      <option value="GPL-3.0-only">GPL-3.0-only</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+
+              <button type="submit" class="btn btn-primary align-self-start">
+                Run Check
+              </button>
+              <p id="audit-error" class="text-danger mb-0" role="alert"></p>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
   </body>
 </html>
