@@ -6,6 +6,8 @@ const router = Router();
 const packages = () => getDB().collection("packages");
 
 router.get("/", async (req, res) => {
+  const page = req.query.page || 1;
+  const limit = 6;
   const ecosystem = req.query.ecosystem || "";
   const tags = req.query.tag || "";
   const licenseType = req.query.licensetype || "";
@@ -13,10 +15,14 @@ router.get("/", async (req, res) => {
   if (ecosystem) filter.ecosystem = ecosystem;
   if (tags) filter.tags = tags;
   if (licenseType) filter.licenseType = licenseType;
-  const list = await packages().find(filter).limit(6).toArray();
+  const list = await packages()
+    .find(filter)
+    .skip((page - 1) * limit)
+    .limit(limit)
+    .toArray();
   res.json(list);
 });
 
-router.post("/", async (req, res) => {});
+// router.post("/", async (req, res) => {});
 
 export default router;
