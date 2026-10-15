@@ -93,4 +93,33 @@ router.post("/", requireLogin, async (req, res) => {
   res.status(201).json({ _id: insertedId });
 });
 
+router.patch("/:id", requireLogin, async (req, res) => {
+  if (!packages.ownerId?.equals(req.userId)) {
+    res
+      .status(403)
+      .json({ error: "You cannot edit a report that does not belong to you!" });
+    return null;
+  }
+});
+
+router.delete("/:id", requireLogin, async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(404).json({ error: "The package was not found!" });
+  }
+  const packageId = new ObjectId(req.params.id);
+  // check to see if the package exists here with findOne ({ _id })
+  const packageExists = await packages().findOne({ _id: req.packageId });
+  if (!packageExists.ownerId?.equals(req.userId)) {
+    return res.status(404).json({ error: "The package was not found!" });
+  }
+  if (!packages.ownerId?.equals(req.userId)) {
+    res.status(403).json({
+      error: "You cannot edit a package that does not belong to you!",
+    });
+    return;
+  }
+  await packages().deleteOne({ _id: packageId });
+  res.status(204).end();
+});
+
 export default router;
