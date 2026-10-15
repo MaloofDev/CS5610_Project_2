@@ -6,6 +6,7 @@ import { connectDB } from "./db/connection.js";
 import authRouter from "./routes/auth.js";
 import licensesRouter from "./routes/licenses.js";
 import reportsRouter from "./routes/reports.js";
+import packagesRouter from "./routes/packages.js";
 
 const PORT = process.env.PORT || 3000;
 const isProduction = process.env.NODE_ENV === "production";
@@ -42,6 +43,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/licenses", licensesRouter);
 // Mount /api/packages here.
 app.use("/api/reports", reportsRouter);
+app.use("/api/packages", packagesRouter);
 
 app.use("/api", (req, res) => {
   res.status(404).json({ error: "Not found." });
