@@ -23,7 +23,21 @@
   <body class="bg-body-tertiary">
     <header id="site-nav"></header>
     <main class="container py-4">
-      <h1 id="packageName" class="h2"></h1>
+      <div class="row">
+        <h1 id="packageName" class="h2 col"></h1>
+        <h1 id="packageVersion" class="h2 col"></h1>
+        <h2 id="packageEcosystem" class="h2 col"></h2>
+      </div>
+      <div class="row">
+        <p id="packageLicense"></p>
+        <p id="packageLicenseType"></p>
+      </div>
+      <div class="row border border-3 form-control-lg rounded-3">
+        <p id="packageDescription"></p>
+      </div>
+      <div class="row">
+        <p id="packageTags"></p>
+      </div>
     </main>
   </body>
 </html>

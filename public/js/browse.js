@@ -2,8 +2,13 @@ function MainModule(packagesID = "#packages") {
   const me = {};
 
   const packagesElement = document.querySelector(packagesID);
-
   function getPackages(packages) {
+    let badgeMaker = "";
+    if (packages.tags.length > 0) {
+      for (let badge of packages.tags) {
+        badgeMaker += `<span class="badge bg-secondary me-1 mb-1">${badge}</span>`;
+      }
+    }
     return `<div class="col">
     <div class="package card h-100">
       <div class="card-body">
@@ -14,7 +19,9 @@ function MainModule(packagesID = "#packages") {
         </h2>
         <p class="ecosystem">${packages.ecosystem}</p>
         <p class="description">${packages.description}</p>
-        <p class="tags">${packages.tags}</p>
+        <p class="tags">${badgeMaker}</p>
+                
+
       </div>
     </div>
   </div>`;
