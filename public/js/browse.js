@@ -4,7 +4,7 @@ function MainModule(packagesID = "#packages") {
   const packagesElement = document.querySelector(packagesID);
   function getPackages(packages) {
     return `<div class="col">
-    <div class="package card">
+    <div class="package card h-100">
 
       <div class="card-body">
         <h2 class="name">${packages.name}</h2>
