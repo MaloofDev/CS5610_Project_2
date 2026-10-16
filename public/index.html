@@ -26,6 +26,40 @@
       <!-- Placeholder until Browse & Search is built. -->
       <h1 class="h2">Browse Packages</h1>
       <p class="text-body-secondary">Package search is coming soon.</p>
+      <form class="hstack gap-2 py-3" role="search">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search by Package Name"
+          aria-label="Search"
+        />
+        <button type="button" class="btn">Search</button>
+      </form>
+      <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+        <select id="ecosystem" class="form-select w-auto">
+          <option value="">Ecosystem</option>
+          <option value="npm">npm</option>
+          <option value="pypi">pypi</option>
+          <option value="packagist">packagist</option>
+        </select>
+        <select id="tags" class="form-select w-auto">
+          <option value="">Tag</option>
+          <option value="npm">Select an Ecosystem</option>
+          <option value="pypi">Select an Ecosystem</option>
+          <option value="packagist">Select an Ecosystem</option>
+        </select>
+        <select id="licenseType" class="form-select w-auto">
+          <option value="">License Type</option>
+          <option value="npm">Select an Ecosystem</option>
+          <option value="pypi">Select an Ecosystem</option>
+          <option value="packagist">Select an Ecosystem</option>
+        </select>
+        <a class="btn btn-primary" href="/packages">Clear</a>
+        <p href="#" class="text-body-secondary ms-auto">Link</p>
+      </div>
+      <div id="packages" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <p>Loading packages...</p>
+      </div>
     </main>
   </body>
 </html>
