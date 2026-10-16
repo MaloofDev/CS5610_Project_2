@@ -2,11 +2,16 @@ function MainModule(packagesID = "#packages") {
   const me = {};
 
   const packagesElement = document.querySelector(packagesID);
+
   function getPackages(packages) {
     return `<div class="col">
     <div class="package card h-100">
       <div class="card-body">
-        <h2 class="name">${packages.name}</h2>
+        <h2 class="name">
+          <a href="/package.html?id=${packages._id}" 
+          class="stretched-link text-reset text-decoration-none">
+          ${packages.name}</a>
+        </h2>
         <p class="ecosystem">${packages.ecosystem}</p>
         <p class="description">${packages.description}</p>
         <p class="tags">${packages.tags}</p>
