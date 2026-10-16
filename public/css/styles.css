@@ -22,3 +22,12 @@
 .results-table td:nth-child(5) {
   min-width: 16rem;
 }
+
+.left-child {
+  align-items: center;
+}
+
+.right-child {
+  margin-left: auto;
+  align-items: center;
+}

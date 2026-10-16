@@ -25,7 +25,6 @@
     <main class="container py-4">
       <!-- Placeholder until Browse & Search is built. -->
       <h1 class="h2">Browse Packages</h1>
-      <p class="text-body-secondary">Package search is coming soon.</p>
       <form class="hstack gap-2 py-3" role="search">
         <input
           class="form-control"
@@ -33,7 +32,7 @@
           placeholder="Search by Package Name"
           aria-label="Search"
         />
-        <button type="button" class="btn">Search</button>
+        <button type="button" class="btn btn-primary">Search</button>
       </form>
       <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
         <select id="ecosystem" class="form-select w-auto">
@@ -54,11 +53,30 @@
           <option value="pypi">Select an Ecosystem</option>
           <option value="packagist">Select an Ecosystem</option>
         </select>
-        <a class="btn btn-primary" href="/packages">Clear</a>
-        <p href="#" class="text-body-secondary ms-auto">Link</p>
+        <a class="btn btn-secondary btn-sm" href="/packages">Clear</a>
+        <p href="/package-form.html" class="btn btn-light ms-auto">
+          + Add Package
+        </p>
       </div>
       <div id="packages" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <p>Loading packages...</p>
+      </div>
+      <div
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-3 left-child"
+      >
+        <div class="col">
+          <p>Filler for Page # of Total</p>
+        </div>
+        <div
+          class="btn-group right-child"
+          role="group"
+          aria-label="Basic outlined example"
+        >
+          <button type="button" class="btn btn-outline-primary">
+            Previous
+          </button>
+          <button type="button" class="btn btn-outline-primary">Next</button>
+        </div>
       </div>
     </main>
   </body>
