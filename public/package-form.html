@@ -22,7 +22,72 @@
   </head>
   <body class="bg-body-tertiary">
     <header id="site-nav"></header>
-    <main class="container py-4"></main>
-    <h1 class="h2">Create Package</h1>
+    <main class="container py-4">
+      <h1 class="h2">Add Package</h1>
+      <form>
+        <div class="row py-2">
+          <div class="col">
+            <label class="form-label">Package Name</label>
+            <input type="text" class="form-control" aria-label="Package Name" />
+          </div>
+          <div class="col">
+            <label class="form-label">Ecosystem</label>
+            <input type="text" class="form-control" aria-label="Ecosystem" />
+          </div>
+          <div class="col">
+            <label class="form-label">License</label>
+            <input type="text" class="form-control" aria-label="License" />
+          </div>
+        </div>
+        <div class="row py-3">
+          <div class="col">
+            <label class="form-label">Version</label>
+            <input type="text" class="form-control" aria-label="Version" />
+          </div>
+          <div class="col">
+            <label class="form-label">Homepage</label>
+            <input type="text" class="form-control" aria-label="Homepage" />
+          </div>
+          <div class="col">
+            <label class="form-label">Repository</label>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Repository url"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 py-2">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Email address</label
+            >
+            <input
+              type="Tags, separated by commas"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Description</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+        <div class="row py-3"></div>
+        <button id="create" type="submit" class="btn btn-primary">
+          Add Package
+        </button>
+        <button id="cancel" type="submit" class="btn btn-secondary">
+          Cancel
+        </button>
+      </form>
+    </main>
   </body>
 </html>
