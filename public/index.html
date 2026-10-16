@@ -25,40 +25,59 @@
     <main class="container py-4">
       <!-- Placeholder until Browse & Search is built. -->
       <h1 class="h2">Browse Packages</h1>
-      <form class="hstack gap-2 py-3" role="search">
+      <form id="searchForm" class="hstack gap-2 py-3" role="search">
         <input
+          id="searchInput"
           class="form-control"
           type="search"
           placeholder="Search by Package Name"
           aria-label="Search"
         />
-        <button type="button" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary">Search</button>
       </form>
       <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
         <select id="ecosystem" class="form-select w-auto">
           <option value="">Ecosystem</option>
           <option value="npm">npm</option>
-          <option value="pypi">pypi</option>
-          <option value="packagist">packagist</option>
+          <option value="PyPI">PyPI</option>
+          <option value="Packagist">Packagist</option>
         </select>
-        <select id="tags" class="form-select w-auto">
+        <select id="tag" class="form-select w-auto">
           <option value="">Tag</option>
-          <option value="npm">Select an Ecosystem</option>
-          <option value="pypi">Select an Ecosystem</option>
-          <option value="packagist">Select an Ecosystem</option>
+          <option value="api">api</option>
+          <option value="artificial-intelligence">
+            artificial-intelligence
+          </option>
+          <option value="cli">cli</option>
+          <option value="client">client</option>
+          <option value="css">css</option>
+          <option value="database">database</option>
+          <option value="http">http</option>
+          <option value="internet">internet</option>
+          <option value="json">json</option>
+          <option value="laravel">laravel</option>
+          <option value="parser">parser</option>
+          <option value="react">react</option>
+          <option value="security">security</option>
+          <option value="software-development">software-development</option>
+          <option value="stream">stream</option>
+          <option value="testing">testing</option>
+          <option value="typescript">typescript</option>
+          <option value="utility">utility</option>
+          <option value="validation">validation</option>
+          <option value="vue">vue</option>
         </select>
         <select id="licenseType" class="form-select w-auto">
           <option value="">License Type</option>
-          <option value="npm">Select an Ecosystem</option>
-          <option value="pypi">Select an Ecosystem</option>
-          <option value="packagist">Select an Ecosystem</option>
+          <option value="permissive">permissive</option>
+          <option value="strong-copyleft">strong-copyleft</option>
+          <option value="unknown">unknown</option>
+          <option value="weak-copyleft">weak-copyleft</option>
         </select>
-        <a id="clear" class="btn btn-secondary btn-sm" href="/packages"
-          >Clear</a
-        >
-        <p href="/package-form.html" class="btn btn-light ms-auto">
+        <a id="clear" class="btn btn-secondary btn-sm">Clear</a>
+        <a href="/package-form.html" class="btn btn-light ms-auto">
           + Add Package
-        </p>
+        </a>
       </div>
       <div id="packages" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <p>Loading packages...</p>

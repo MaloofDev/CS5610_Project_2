@@ -18,7 +18,8 @@ function MainModule(packagesID = "#packages") {
   const nextButton = document.querySelector("#next");
   const previousButton = document.querySelector("#previous");
   const clearButton = document.querySelector("#clear");
-  const searchButton = document.querySelector("#search");
+  const searchForm = document.querySelector("#searchForm");
+  const searchInput = document.querySelector("#searchInput");
   const ecosystemSelector = document.querySelector("#ecosystem");
   const tagSelector = document.querySelector("#tag");
   const licenseTypeSelector = document.querySelector("#licenseType");
@@ -46,7 +47,12 @@ function MainModule(packagesID = "#packages") {
     me.redraw(packages);
   }
 
-  // searchButton.addEventListener("click", redraw);
+  searchForm.addEventListener("submit", (button) => {
+    button.preventDefault();
+    pkgs.search = searchInput.value;
+    pkgs.page = 1;
+    loadData();
+  });
 
   ecosystemSelector.addEventListener("change", () => {
     pkgs.ecosystem = ecosystemSelector.value;
