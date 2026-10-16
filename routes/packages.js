@@ -10,7 +10,8 @@ const trimValue = (value) => (typeof value === "string" ? value.trim() : "");
 
 router.get("/", async (req, res) => {
   const search = (req.query.search || "").trim();
-  const page = req.query.page || 1;
+  let page = req.query.page || 1;
+  if (page < 1) page = 1;
   const limit = 6;
   const ecosystem = req.query.ecosystem || "";
   const tags = req.query.tag || "";

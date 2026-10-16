@@ -5,7 +5,6 @@ function MainModule(packagesID = "#packages") {
   function getPackages(packages) {
     return `<div class="col">
     <div class="package card h-100">
-
       <div class="card-body">
         <h2 class="name">${packages.name}</h2>
         <p class="ecosystem">${packages.ecosystem}</p>
@@ -15,26 +14,74 @@ function MainModule(packagesID = "#packages") {
     </div>
   </div>`;
   }
-  function redraw(listings) {
+
+  const nextButton = document.querySelector("#next");
+  const previousButton = document.querySelector("#previous");
+  const clearButton = document.querySelector("#clear");
+  const searchButton = document.querySelector("#search");
+  const ecosystemSelector = document.querySelector("#ecosystem");
+  const tagSelector = document.querySelector("#tag");
+  const licenseTypeSelector = document.querySelector("#licenseType");
+  let pageCount = document.querySelector("#pageCount");
+
+  let pkgs = {
+    search: "",
+    ecosystem: "",
+    tag: "",
+    licenseType: "",
+    page: 1,
+  };
+
+  function redraw(packages) {
     packagesElement.innerHTML = "";
-    // for (let i = 0; i < listings.length; i++) {
-    //   listingsElement.innerHTML += getListingCode(listings[i]);
-    // }
-
-    // for (let listing of listings) {
-    //   console.log("listing", listing );
-    //   listingsElement.innerHTML += getListingCode(listing);
-    // }
-
-    packagesElement.innerHTML = listings.map(getPackages).join("\n");
+    packagesElement.innerHTML = packages.items.map(getPackages).join("\n");
+    pageCount.textContent = `Page ${packages.page} of ${packages.totalPages}`;
+    previousButton.disabled = packages.page <= 1;
+    nextButton.disabled = packages.page >= pkgs.totalPages;
   }
 
   async function loadData() {
-    const res = await fetch("/api/packages");
+    const res = await fetch(`/api/packages?${new URLSearchParams(pkgs)}`);
     const packages = await res.json();
-
-    me.redraw(packages.items);
+    me.redraw(packages);
   }
+
+  // searchButton.addEventListener("click", redraw);
+
+  ecosystemSelector.addEventListener("change", () => {
+    pkgs.ecosystem = ecosystemSelector.value;
+    pkgs.page = 1;
+    loadData();
+  });
+
+  tagSelector.addEventListener("change", () => {
+    pkgs.tag = tagSelector.value;
+    pkgs.page = 1;
+    loadData();
+  });
+
+  licenseTypeSelector.addEventListener("change", () => {
+    pkgs.licenseType = licenseTypeSelector.value;
+    pkgs.page = 1;
+    loadData();
+  });
+
+  clearButton.addEventListener("click", () => {
+    pkgs = { search: "", ecosystem: "", tag: "", licenseType: "", page: 1 };
+    loadData();
+  });
+
+  nextButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    pkgs.page++;
+    loadData();
+  });
+
+  previousButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    pkgs.page--;
+    loadData();
+  });
 
   me.redraw = redraw;
   me.loadData = loadData;
@@ -43,5 +90,4 @@ function MainModule(packagesID = "#packages") {
 }
 
 const main = MainModule();
-
 main.loadData();
