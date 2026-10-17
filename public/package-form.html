@@ -29,34 +29,69 @@
           >Please login to add a packages to License Lens.</a
         >
       </div>
-      <form>
+      <form id="packageForm" class="needs-validation" novalidate>
         <div class="row py-2">
           <div class="col">
             <label class="form-label">Package Name</label>
-            <input type="text" class="form-control" aria-label="Package Name" />
+            <input
+              type="text"
+              name="packageName"
+              class="form-control"
+              aria-label="Package Name"
+            />
           </div>
           <div class="col">
             <label class="form-label">Ecosystem</label>
-            <input type="text" class="form-control" aria-label="Ecosystem" />
+            <input
+              type="text"
+              name="ecosystem"
+              class="form-control"
+              aria-label="Ecosystem"
+            />
           </div>
           <div class="col">
             <label class="form-label">License</label>
-            <input type="text" class="form-control" aria-label="License" />
+            <input
+              type="text"
+              name="license"
+              class="form-control"
+              aria-label="License"
+            />
+          </div>
+          <div class="col">
+            <label class="form-label">License Type</label>
+            <input
+              type="text"
+              name="licenseType"
+              class="form-control"
+              aria-label="License Type"
+            />
           </div>
         </div>
         <div class="row py-3">
           <div class="col">
             <label class="form-label">Version</label>
-            <input type="text" class="form-control" aria-label="Version" />
+            <input
+              type="text"
+              name="version"
+              class="form-control"
+              aria-label="Version"
+            />
           </div>
           <div class="col">
             <label class="form-label">Homepage</label>
-            <input type="text" class="form-control" aria-label="Homepage" />
+            <input
+              type="text"
+              name="homepage"
+              class="form-control"
+              aria-label="Homepage"
+            />
           </div>
           <div class="col">
             <label class="form-label">Repository</label>
             <input
               type="text"
+              name="repository"
               class="form-control"
               aria-label="Repository url"
             />
@@ -65,13 +100,14 @@
         <div class="row">
           <div class="mb-3 py-2">
             <label for="exampleFormControlInput1" class="form-label"
-              >Email address</label
+              >Tags</label
             >
             <input
               type="Tags, separated by commas"
+              name="tags"
               class="form-control"
               id="exampleFormControlInput1"
-              placeholder="name@example.com"
+              placeholder="tag1,tag2,tag3"
             />
           </div>
           <div class="mb-3">
@@ -79,6 +115,7 @@
               >Description</label
             >
             <textarea
+              name="description"
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
