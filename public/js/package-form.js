@@ -48,13 +48,13 @@ form.addEventListener("submit", async (event) => {
   packageCapture.version = version;
   const res = await createPackage(packageCapture);
   if (!res.ok) {
-    const err = await res.json());
+    const err = await res.json();
     document.querySelector("#formError").textContent = err.error;
     document.querySelector("#formError").hidden = false;
     return;
   }
   const success = await res.json();
-  location.href = `/package.html?id=${created._id}`;
+  location.href = `/package.html?id=${success._id}`;
 });
 
 setUp();
