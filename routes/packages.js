@@ -139,13 +139,13 @@ router.delete("/:id", requireLogin, async (req, res) => {
   const packageId = new ObjectId(req.params.id);
 
   // check to see if the package exists
-  const packageExists = await packages().findOne({ _id: req.packageId });
+  const packageExists = await packages().findOne({ _id: packageId });
   if (!packageExists) {
     return res.status(404).json({ error: "The package was not found!" });
   }
 
   // Verify the user owns the package
-  if (!packages.ownerId?.equals(req.userId)) {
+  if (!packageExists.ownerId?.equals(req.userId)) {
     res.status(403).json({
       error: "You cannot delete a package that does not belong to you!",
     });
