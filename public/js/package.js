@@ -8,8 +8,8 @@ async function setUp() {
   const userId = user?.userId;
 
   if (userId !== packageOwnerId) {
-    document.querySelector("#delete").disabled = true;
-    document.querySelector("#edit").disabled = true;
+    document.querySelector("#deleteButton").disabled = true;
+    document.querySelector("#editButton").disabled = true;
   }
 }
 
@@ -17,6 +17,11 @@ async function checkLogin() {
   const res = await fetch("/api/auth/me");
   if (!res.ok) return null;
   return res.json();
+}
+
+async function deletePackage(id) {
+  const res = await fetch(`/api/packages/${id}`, { method: "DELETE" });
+  return res;
 }
 
 async function loadPackage() {
@@ -42,5 +47,19 @@ async function loadPackage() {
     packageDetails.version;
   return packageDetails;
 }
+
+// Delete Package
+const deleteButton = document.querySelector("#deleteButton");
+deleteButton.addEventListener("click", async () => {
+  // Run a call to delete function
+  const res = await deletePackage(id);
+  if (!res.ok) {
+    const err = await res.json();
+    document.querySelector("#formError").textContent = err.error;
+    document.querySelector("#formError").hidden = false;
+    return;
+  }
+  location.href = `/index.html?id`;
+});
 
 setUp();

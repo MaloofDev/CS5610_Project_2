@@ -57,4 +57,11 @@ form.addEventListener("submit", async (event) => {
   location.href = `/package.html?id=${success._id}`;
 });
 
+// Cancel
+ecosystemSelector.addEventListener("change", () => {
+  pkgs.ecosystem = ecosystemSelector.value;
+  pkgs.page = 1;
+  loadData();
+});
+
 setUp();
