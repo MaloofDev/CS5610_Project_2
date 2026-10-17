@@ -23,6 +23,18 @@
   min-width: 16rem;
 }
 
+.pkg-column {
+  float: left;
+}
+
+.left {
+  width: 65%;
+}
+
+.right {
+  width: 35%;
+}
+
 .left-child {
   align-items: center;
 }
