@@ -5,12 +5,11 @@ async function checkLogin() {
 
 async function setUp() {
   const loggedIn = await checkLogin();
-  if (loggedIn) {
+  if (!loggedIn) {
     document.querySelector("#loginNotice").hidden = false;
     document.querySelector("#loginForm").hidden = true;
   }
 }
-
 setUp();
 
 // async function loadPackage() {

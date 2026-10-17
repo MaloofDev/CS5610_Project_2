@@ -8,6 +8,7 @@ const router = Router();
 const packages = () => getDB().collection("packages");
 const trimValue = (value) => (typeof value === "string" ? value.trim() : "");
 
+// Get package details to display on browse page - 6 at a time
 router.get("/", async (req, res) => {
   const search = (req.query.search || "").trim();
   let page = req.query.page || 1;
@@ -31,6 +32,7 @@ router.get("/", async (req, res) => {
   res.json({ items: list, page, totalDocs, totalPages });
 });
 
+// Get package details to display on detail page
 router.get("/:id", async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(404).json({ error: "The package was not found!" });
@@ -45,6 +47,7 @@ router.get("/:id", async (req, res) => {
   res.json(packageInfo);
 });
 
+// Create a new package
 router.post("/", requireLogin, async (req, res) => {
   const name = trimValue(req.body.name);
   const ecosystem = trimValue(req.body.ecosystem);
@@ -94,31 +97,62 @@ router.post("/", requireLogin, async (req, res) => {
   res.status(201).json({ _id: insertedId });
 });
 
+// Edit a package detail
 router.patch("/:id", requireLogin, async (req, res) => {
-  if (!packages.ownerId?.equals(req.userId)) {
-    res
-      .status(403)
-      .json({ error: "You cannot edit a report that does not belong to you!" });
-    return null;
-  }
-});
-
-router.delete("/:id", requireLogin, async (req, res) => {
+  // Verifies this id is valid against node_modules/mongodb/ ObjectId.isValid function
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(404).json({ error: "The package was not found!" });
   }
+
+  // Convert package id into an object for mongo comparison
   const packageId = new ObjectId(req.params.id);
-  // check to see if the package exists here with findOne ({ _id })
+
+  // check to see if the package exists
   const packageExists = await packages().findOne({ _id: req.packageId });
-  if (!packageExists.ownerId?.equals(req.userId)) {
+  if (!packageExists) {
     return res.status(404).json({ error: "The package was not found!" });
   }
+
+  // Verify the user owns the package
   if (!packages.ownerId?.equals(req.userId)) {
     res.status(403).json({
-      error: "You cannot edit a package that does not belong to you!",
+      error: "You cannot delete a package that does not belong to you!",
     });
     return;
   }
+
+  const updates = {};
+
+  // If all are true delete package
+  await packages().updateOne({ $set: updates }, { returnDocument: "after" });
+  res.status(204).end();
+});
+
+// Delete a package you own in the system
+router.delete("/:id", requireLogin, async (req, res) => {
+  // Verifies this id is valid against node_modules/mongodb/ ObjectId.isValid function
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(404).json({ error: "The package was not found!" });
+  }
+
+  // Convert package id into an object for mongo comparison
+  const packageId = new ObjectId(req.params.id);
+
+  // check to see if the package exists
+  const packageExists = await packages().findOne({ _id: req.packageId });
+  if (!packageExists) {
+    return res.status(404).json({ error: "The package was not found!" });
+  }
+
+  // Verify the user owns the package
+  if (!packages.ownerId?.equals(req.userId)) {
+    res.status(403).json({
+      error: "You cannot delete a package that does not belong to you!",
+    });
+    return;
+  }
+
+  // If all are true delete package
   await packages().deleteOne({ _id: packageId });
   res.status(204).end();
 });
