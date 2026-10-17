@@ -108,23 +108,69 @@ router.patch("/:id", requireLogin, async (req, res) => {
   const packageId = new ObjectId(req.params.id);
 
   // check to see if the package exists
-  const packageExists = await packages().findOne({ _id: req.packageId });
+  const packageExists = await packages().findOne({ _id: packageId });
   if (!packageExists) {
     return res.status(404).json({ error: "The package was not found!" });
   }
 
   // Verify the user owns the package
-  if (!packages.ownerId?.equals(req.userId)) {
+  if (!packageExists.ownerId?.equals(req.userId)) {
     res.status(403).json({
       error: "You cannot delete a package that does not belong to you!",
     });
     return;
   }
 
+  const name = trimValue(req.body.name);
+  const ecosystem = trimValue(req.body.ecosystem);
+  const license = trimValue(req.body.license);
+  const licenseType = trimValue(req.body.licenseType);
+  const version = trimValue(req.body.version);
+  const homepage = trimValue(req.body.homepage);
+  const repository = trimValue(req.body.repository);
+  const tags = trimValue(req.body.tags);
+  const description = trimValue(req.body.description);
   const updates = {};
+  if (!name) {
+    return res.status(400).json({ error: "The name is required!" });
+  } else {
+    updates.name = name;
+  }
 
-  // If all are true delete package
-  await packages().updateOne({ $set: updates }, { returnDocument: "after" });
+  if (!ecosystem) {
+    return res.status(400).json({ error: "The ecosystem is required!" });
+  } else {
+    updates.ecosystem = ecosystem;
+  }
+
+  if (!license) {
+    return res.status(400).json({ error: "The license is required!" });
+  } else {
+    updates.license = license;
+  }
+
+  if (!licenseType) {
+    return res.status(400).json({ error: "The license type is required!" });
+  } else {
+    updates.licenseType = licenseType;
+  }
+
+  updates.version = version;
+  updates.homepage = homepage;
+  updates.repository = repository;
+  updates.tags = tags
+    .split(",")
+    .map((t) => t.trim())
+    .filter(Boolean);
+  updates.description = description;
+  updates.ownerId = req.userId;
+
+  // If all are true update package
+  await packages().updateOne(
+    { _id: packageId },
+    { $set: updates },
+    { returnDocument: "after" }
+  );
   res.status(204).end();
 });
 

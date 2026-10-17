@@ -9,6 +9,8 @@ async function setUp() {
     document.querySelector("#loginNotice").hidden = false;
     document.querySelector("#loginForm").hidden = true;
   }
+
+  const loginForm = document.querySelector("#loginForm");
 }
 setUp();
 
