@@ -25,6 +25,7 @@
 
 .pkg-column {
   float: left;
+  padding-right: 3rem;
 }
 
 .left {
@@ -33,7 +34,17 @@
 
 .right {
   width: 35%;
+  margin-top: 4rem;
+  border-left: 3px solid rgb(16 24 40 / 40%);
 }
+
+.upper {
+  transform: translateY(1rem);
+}
+
+/*.lower {*/
+/*  transform: translateY(-1rem);*/
+/*}*/
 
 .left-child {
   align-items: center;
